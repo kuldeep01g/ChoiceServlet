@@ -1,17 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        input[type="text"] {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        input[name="sb"][value="Add"] {
+            background-color: #28a745;
+            color: white;
+        }
+        input[name="sb"][value="Avg"] {
+            background-color: #007bff;
+            color: white;
+        }
+        input[name="sb"][value="Sub"] {
+            background-color: #dc3545;
+            color: white;
+        }
+        input[name="sb"][value="Mul"] {
+            background-color: #ffc107;
+            color: white;
+        }
+    </style>
+    <script>
+        function validateForm(event) {
+            let v1 = document.forms["calcForm"]["v1"].value;
+            let v2 = document.forms["calcForm"]["v2"].value;
+            if (isNaN(v1) || isNaN(v2) || v1.trim() === "" || v2.trim() === "") {
+                alert("Please enter valid numbers.");
+                event.preventDefault();
+            }
+        }
+    </script>
 </head>
 <body>
-<form action="dis" method="post">
-Enter 1st input value:- <input type="text" name="v1" ><br>
-Enter 2nd input value:- <input type="text" name="v2" ><br>
-<input type="submit"  name="sb" value="Add">
-<input type="submit"  name="sb" value="Avg">
-<input type="submit"  name="sb" value="Mul">
-
-</form>
+    <form name="calcForm" action="dis" method="post" onsubmit="validateForm(event)">
+        <h2>Welcome to the calculator</h2>
+        <label>Enter 1st input value:</label>
+        <input type="text" name="v1"><br>
+        <label>Enter 2nd input value:</label>
+        <input type="text" name="v2"><br>
+        <input type="submit" name="sb" value="Add">
+        <input type="submit" name="sb" value="Avg">
+        <input type="submit" name="sb" value="Mul"><br>
+    </form>
 </body>
 </html>
